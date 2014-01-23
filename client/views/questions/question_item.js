@@ -10,6 +10,7 @@ Template.questionItem.events({
   'click .rateit-range' : function() {
     var score = $('#' + this._id).rateit('value');
     console.log(this.title + ": " + score);
+    /*
     var rating = {
       score: score,
       questionId: this._id
@@ -20,7 +21,7 @@ Template.questionItem.events({
       } else {
         console.log("Created rating: " + ratingId);
       }
-
     });
+    */
   }
 });

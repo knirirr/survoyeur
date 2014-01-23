@@ -1,7 +1,7 @@
 /**
  * Created by milo on 23/01/2014.
  */
-Ratings = new Meteor.collection('ratings');
+Ratings = new Meteor.Collection('ratings');
 
 Meteor.methods({
   rating: function(ratingAttributes) {
@@ -19,7 +19,7 @@ Meteor.methods({
       submitted: new Date().getTime()
     }
 
-    //var ratingId = Ratings.insert(rating);
-    //return ratingId;
+    var ratingId = Ratings.insert(rating);
+    return ratingId;
   }
 });
