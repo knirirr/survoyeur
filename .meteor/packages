@@ -6,3 +6,10 @@
 insecure
 preserve-inputs
 iron-router
+standard-app-packages
+bootstrap
+jquery-rateit
+accounts-ui-bootstrap-dropdown
+accounts-password
+spin
+errors

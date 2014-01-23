@@ -1,5 +1,9 @@
 {
   "packages": {
-    "iron-router": {}
+    "iron-router": {},
+    "jquery-rateit": {},
+    "accounts-ui-bootstrap-dropdown": {},
+    "spin": {},
+    "errors": {}
   }
 }

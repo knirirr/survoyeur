@@ -1,8 +1,10 @@
 if (Questions.find().count() === 0) {
   var q1 = Questions.insert({
-    title:  "How interesting is this project?"
+    title:  "How much do you like pies? "
   });
-var q1 = Questions.insert({
-    title:  "Seriously, is it interesting?"
+  var q2 = Questions.insert({
+    title:  "How about cakes? "
   });
+  console.log("Inserted: " + q1);
+  console.log("Inserted: " + q2);
 }

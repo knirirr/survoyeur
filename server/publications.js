@@ -1,3 +1,3 @@
 Meteor.publish('questions', function() {
-  return Questions.find();  
+  return Questions.find();
 });
