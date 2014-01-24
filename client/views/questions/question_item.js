@@ -2,32 +2,52 @@
  * Created by milo on 23/01/2014.
  */
 
+/*
+Sets up all the rating widgets.
+ */
 Template.questionItem.rendered = function() {
   $(this.findAll('.rateit')).rateit();
 }
 
+/*
+Handles clicks on both the rating stars and the clear button, both of whic
+call the doRating function for database calls.
+ */
 Template.questionItem.events({
   'click .rateit-range': function() {
     var score = $('#' + this._id).rateit('value');
+    console.log(this.title + ": " + score);
     doRating(score,this._id);
   },
   'click .rateit-reset': function() {
     var score = 0;
+    console.log(this.title + ": " + score);
     doRating(score,this._id);
   }
 });
 
+/*
+This part of the code deals with creating new ratings, updating existing ones, or deleting
+them. They're deleted rather than set to 0 so that questions are counted as unrated rather
+than 0 and therefore don't skew the average.
+See collections/ratings.js for the Meteor methods.
+ */
 function doRating(score,questionId) {
-  console.log(this.title + ": " + score);
   var rating = {
     score: score,
     questionId: questionId
   };
-  Meteor.call('rating', rating, function(error,ratingId) {
-    if (error) {
-      Errors.throw(error.reason);
-    } else {
-      console.log("Rating ID: " + ratingId);
-    }
-  });
+  if (score == 0) {
+    Meteor.call('purgeRating',rating,function(error,ratingId){
+      if (error) {
+        Errors.throw(error.reason);
+      }
+    });
+  } else {
+    Meteor.call('rating', rating, function(error,ratingId) {
+      if (error) {
+        Errors.throw(error.reason);
+      }
+    });
+  }
 }

@@ -4,15 +4,15 @@
 Ratings = new Meteor.Collection('ratings');
 
 Meteor.methods({
-  rating: function(ratingAttributes) {
+  rating: function(ratingAttributes) { // update or create a new rating
     var user = Meteor.user();
     var question = Questions.findOne(ratingAttributes.questionId);
 
     if (!user)
-      throw new Meteor.Error(401,"Only logged-in users may answer questions.");
+      throw new meteor.error(401,"only logged-in users may answer questions.");
 
     if (!question)
-      throw new Meteor.Error(422, "You may only rate a question.");
+      throw new meteor.error(422, "you may only rate a question.");
 
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
     if (oldRating) {
@@ -37,5 +37,23 @@ Meteor.methods({
 
     var ratingId = Ratings.insert(rating);
     return ratingId;
+  },
+  purgeRating: function(ratingAttributes) { // purge an existing rating
+    var user = Meteor.user();
+    var question = Questions.findOne(ratingAttributes.questionId);
+
+    if (!user)
+      throw new meteor.error(401,"only logged-in users may answer questions.");
+
+    if (!question)
+      throw new meteor.error(422, "you may only rate a question.");
+
+    var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
+    if (oldRating) {
+      Ratings.remove(oldRating._id);
+      console.log("Rating " + oldRating._id + " purged.");
+    } else {
+      console.log("Old rating not found.");
+    }
   }
 });
