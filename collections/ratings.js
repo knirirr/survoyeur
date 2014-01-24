@@ -11,13 +11,29 @@ Meteor.methods({
     if (!user)
       throw new Meteor.Error(401,"Only logged-in users may answer questions.");
 
-    if (!post)
+    if (!question)
       throw new Meteor.Error(422, "You may only rate a question.");
 
-    rating = _.extend(_.pick(ratingAttributes, 'questionId','score')), {
+    var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
+    if (oldRating) {
+      console.log("oldRating: " + oldRating._id);
+      if (oldRating.score != ratingAttributes.score) {
+        console.log("Changing existing rating from " + oldRating.score + " to " + ratingAttributes.score + ".");
+        Ratings.update(oldRating._id,{$set: {score: ratingAttributes.score}})
+      } else {
+        console.log("Rating unchanged at: " + oldRating.score);
+      }
+      return oldRating._id;
+    } else {
+      console.log("Old rating not found.");
+    }
+
+    rating = _.extend(_.pick(ratingAttributes, 'questionId','score'), {
       userId: user._id,
       submitted: new Date().getTime()
-    }
+    });
+
+    console.log("Rating: " + rating.userId + "/" + rating.submitted);
 
     var ratingId = Ratings.insert(rating);
     return ratingId;
