@@ -4,7 +4,7 @@
       {{title}}
     </div>
     {{#if currentUser }}
-      <div class="rateit pull-right" data-rateit-value="0" data-rateit-step="1" id="{{_id}}"></div>
+      <div class="rateit pull-right" data-rateit-value="{{currVal}}" data-rateit-step="1" id="{{_id}}"></div>
     {{else}}
       <span class="pull-right">Please log in to vote.</span>
     {{/if}}

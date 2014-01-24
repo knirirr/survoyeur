@@ -9,6 +9,17 @@ Template.questionItem.rendered = function() {
   $(this.findAll('.rateit')).rateit();
 }
 
+Template.questionItem.helpers({
+  currVal: function() {
+    var rating = Ratings.findOne({questionId:this._id, userId: Meteor.userId()});
+    if (rating) {
+      return rating.score;
+    } else {
+      return 0;
+    }
+  }
+});
+
 /*
 Handles clicks on both the rating stars and the clear button, both of whic
 call the doRating function for database calls.

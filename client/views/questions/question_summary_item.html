@@ -1,0 +1,12 @@
+<template name="questionSummaryItem">
+  <div class="question">
+    <div class="question-content">
+      {{title}}
+    </div>
+    {{#if currentUser }}
+      <div class="pull-right">{{currentMean}}</div>
+    {{else}}
+      <span class="pull-right">Please log in to see the summary.</span>
+    {{/if}}
+  </div>
+</template>
