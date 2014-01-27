@@ -3,6 +3,14 @@
  */
 Ratings = new Meteor.Collection('ratings');
 
+/*
+Ratings only allowed when logged in
+ */
+Ratings.allow({
+  insert: function(userId, doc) {
+  return !! userId; }
+});
+
 Meteor.methods({
   rating: function(ratingAttributes) { // update or create a new rating
     var user = Meteor.user();
@@ -36,6 +44,7 @@ Meteor.methods({
     console.log("Rating: " + rating.userId + "/" + rating.submitted);
 
     var ratingId = Ratings.insert(rating);
+    Questions.update(question,{$addToSet: {ratings: ratingId}});
     return ratingId;
   },
   purgeRating: function(ratingAttributes) { // purge an existing rating
@@ -51,6 +60,7 @@ Meteor.methods({
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
     if (oldRating) {
       Ratings.remove(oldRating._id);
+      Questions.update(question,{$pull: {ratings: ratingId}});
       console.log("Rating " + oldRating._id + " purged.");
     } else {
       console.log("Old rating not found.");

@@ -4,9 +4,15 @@
       {{title}}
     </div>
     {{#if currentUser }}
-      <div class="rateit pull-right" data-rateit-value="{{currVal}}" data-rateit-step="1" id="{{_id}}"></div>
+    <div class="rateit pull-right" data-rateit-value="{{currVal}}" data-rateit-step="1" id="{{_id}}"></div>
+    <br>
+    <div class="control-group pull-left">
+      <div class="controls">
+        <textarea name="answer-{{this._id}}"></textarea>
+      </div>
+    </div>
     {{else}}
-      <span class="pull-right">Please log in to vote.</span>
+      <span class="pull-right">Please log in to answer.</span>
     {{/if}}
   </div>
 </template>

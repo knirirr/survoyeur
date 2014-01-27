@@ -1,0 +1,15 @@
+<template name="surveyItem">
+  <p>These are the questions for survey &ldquo;{{this.title}}&rdquo;.</p>
+  <form name="questions" class="question-form">
+  <div class="questions">
+    {{#each questions}}
+      {{> questionItem }}
+    {{/each}}
+  </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn">Save answers</button>
+      </div>
+    </div>
+  </form>
+</template>
