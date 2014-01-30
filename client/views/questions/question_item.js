@@ -17,6 +17,14 @@ Template.questionItem.helpers({
     } else {
       return 0;
     }
+  },
+  lastAnswer: function() {
+    var answer = Answers.findOne({questionId:this._id, userId: Meteor.userId()});
+    if (answer) {
+      return answer.text;
+    } else {
+      return "No answer!";
+    }
   }
 });
 

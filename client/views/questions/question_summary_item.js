@@ -15,5 +15,8 @@ Template.questionSummaryItem.helpers({
     } else {
       return "No votes!";
     }
+  },
+  answerCount: function() {
+    return Answers.find({questionId: this._id}).count();
   }
 });

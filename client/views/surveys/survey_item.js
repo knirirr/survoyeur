@@ -40,23 +40,22 @@ Template.surveyItem.events({
       alert("You must complete all the fields!");
     } else {
       //submit the form
+      var frc = null;
+      for (var key in goodResponse) {
+        var answer = {
+          text: goodResponse[key],
+          questionId: key
+        }
+        Meteor.call('answer',answer,function(error,answerId){
+          frc = error;
+        });
+      }
+      // save the last error, rather than fill screen with them
+      if (frc) {
+        Errors.throw(frc.reason);
+      } else {
+        Router.go('/');
+      }
     }
-
-
-    /*
-     var $body = $(e.target).find('[name=body]');
-     var comment = {
-     body: $body.val(),
-     postId: template.data._id
-     };
-
-     Meteor.call('comment', comment, function(error, commentId) {
-     if (error){
-     throwError(error.reason);
-     } else {
-     $body.val('');
-     }
-     });
-     */
   }
 });

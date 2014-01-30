@@ -4,7 +4,7 @@
 
 Template.surveyList.helpers({
   surveys: function() {
-    console.log("Surveys: " + Surveys.find().count());
+    console.log("survey_list.js, survey count: " + Surveys.find().count());
     return Surveys.find();
   }
 });

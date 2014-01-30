@@ -2,7 +2,8 @@
   "packages": {
     "iron-router": {},
     "jquery-rateit": {},
-    "accounts-ui-bootstrap-dropdown": {},
-    "spin": {}
+    "spin": {},
+    "bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }

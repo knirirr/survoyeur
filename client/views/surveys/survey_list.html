@@ -1,7 +1,8 @@
 <template name="surveyList">
   <div class="surveys">
-    {{#each survey}}
-      {{> surveyItem }}
+    <p>This is a list of all the available surveys.</p>
+    {{#each surveys}}
+      {{> surveyChoiceItem }}
     {{/each}}
   </div>
 </template>

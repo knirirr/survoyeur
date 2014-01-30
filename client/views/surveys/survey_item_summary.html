@@ -1,0 +1,10 @@
+<template name="surveyItemSummary">
+  <p>These are the ratings and answers for survey &ldquo;{{this.title}}&rdquo;.</p>
+  <form name="questions" class="question-form">
+    <div class="questions">
+      {{#each questions}}
+        {{> questionSummaryItem }}
+      {{/each}}
+    </div>
+  </form>
+</template>

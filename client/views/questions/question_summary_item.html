@@ -4,7 +4,7 @@
       {{title}}
     </div>
     {{#if currentUser }}
-      <div class="pull-right">{{currentMean}}</div>
+      <div class="pull-right">Current rating: {{currentMean}}. Answers from {{pluralise answerCount "user"}}.</div>
     {{else}}
       <span class="pull-right">Please log in to see the summary.</span>
     {{/if}}
