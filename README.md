@@ -1,14 +1,13 @@
 Survoyeur
 =========
 
-This will eventually be a Meteor project for answering survey questions. It sort of does that now, but in an incredibly
-crude and alpha way.
+This is a simple Meteor project for answering survey questions, whilst providing a live update of the current results and ratings on each question.
 
 Instructions
 ------------
 
 1. Install Meteor, Meteorite &c. in the usual way, and run this application.
-2. Go to the root path to answer questions.
-3. Go to /questions/summary to see the current vote.
+2. Er...
+3. That's it!
 
 
