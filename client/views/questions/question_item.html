@@ -1,18 +1,28 @@
 <template name="questionItem">
-  <div class="question">
-    <div class="question-content">
-      {{title}}
-    </div>
-    {{#if currentUser }}
-    <div class="rateit pull-right" data-rateit-value="{{currVal}}" data-rateit-step="1" id="{{_id}}"></div>
-    <br>
-    <div class="control-group pull-left">
-      <div class="controls">
-        <textarea name="answer-{{this._id}}">{{lastAnswer}}</textarea>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{title}}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="control-group pull-left">
+              <div class="controls">
+                <textarea class="form-control" rows="8" cols="60" name="answer-{{this._id}}">{{lastAnswer}}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        {{#if currentUser }}
+          <div class="rateit pull-right" data-rateit-value="{{currVal}}" data-rateit-step="1" id="{{_id}}"></div>
+        {{else}}
+          <span class="pull-right">Please log in to answer.</span>
+        {{/if}}
       </div>
     </div>
-    {{else}}
-      <span class="pull-right">Please log in to answer.</span>
-    {{/if}}
   </div>
 </template>
+

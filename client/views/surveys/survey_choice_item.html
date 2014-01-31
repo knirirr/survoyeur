@@ -1,15 +1,15 @@
 <template name="surveyChoiceItem">
   <div class="question">
     <div class="question-content">
-      {{title}}
+      <h3>{{title}}</h3>
+      {{#if alreadyTaken }}
+        <span class="text-success">You have already answered {{numberAnswered}}/{{totalQuestions}} questions.</span>
+      {{/if}}
     </div>
     {{#if currentUser }}
       <div class="pull-right">
-        {{#if alreadyTaken }}
-          <span class="pull-right"><a href="{{pathFor 'surveyItem'}}">Take the survey</a>. You have already answered {{numberAnswered}} questions.</span>
-        {{else}}
-          <span class="pull-right"><a href="{{pathFor 'surveyItem'}}">Take the survey</a>.</span>
-        {{/if}}
+        <a class="btn btn-info" href="{{pathFor 'surveySummary'}}">View the results</a>
+        <a class="btn btn-success" href="{{pathFor 'surveyItem'}}">Take the survey</a>
       </div>
     {{else}}
       <span class="pull-right">Please log in to take the survey.</span>

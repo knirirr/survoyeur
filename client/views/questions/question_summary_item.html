@@ -1,12 +1,19 @@
 <template name="questionSummaryItem">
-  <div class="question">
-    <div class="question-content">
-      {{title}}
-    </div>
-    {{#if currentUser }}
-      <div class="pull-right">Current rating: {{currentMean}}. Answers from {{pluralise answerCount "user"}}.</div>
-    {{else}}
-      <span class="pull-right">Please log in to see the summary.</span>
-    {{/if}}
-  </div>
+  <tr>
+    <td>{{title}}</td>
+    <td>
+      {{#if currentUser }}
+        {{answerCount}}
+      {{else}}
+        Please log in to see the number of answers.
+      {{/if}}
+    </td>
+    <td>
+      {{#if currentUser }}
+        {{currentMean}}
+      {{else}}
+        Please log in to see the rating.
+      {{/if}}
+    </td>
+  </tr>
 </template>

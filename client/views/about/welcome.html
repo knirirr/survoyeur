@@ -1,4 +1,9 @@
 <template name="welcome">
-  <h1>Welcome to Survoyeur</h1>
-  <p>This application is totally awesome. To see the available surveys, look <a href="{{pathFor 'surveyList'}}">here</a>.</p>
+  <div class="jumbotron">
+    <h1>Welcome to Survoyeur</h1>
+    <p class="lead">This application is totally awesome.</p>
+    <p>Whilst each survey is underway, you'll be able to see the average of everyone's rating for each question, and perhaps even
+    whatever witty remarks they care to have shared with us. What could possibly be more exciting?</p>
+    <p><a class="btn btn-lg btn-success" href="{{pathFor 'surveyList'}}" role="button">Show me the surveys!</a></p>
+  </div>
 </template>

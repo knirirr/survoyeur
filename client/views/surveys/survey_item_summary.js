@@ -6,3 +6,4 @@ Template.surveyItemSummary.helpers({
     return Questions.find();
   }
 });
+

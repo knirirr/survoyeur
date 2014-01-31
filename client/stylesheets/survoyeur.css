@@ -1,5 +1,7 @@
 /* CSS declarations go here */
 
+
+
 #spinner { height: 350px }
 
 /*
@@ -11,10 +13,20 @@
     -ms-border-radius: 0px 0px 3px 3px;
     -o-border-radius: 0px 0px 3px 3px;
     border-radius: 0px 0px 3px 3px; }
+
+
+
+body {
+    background: #eee;
+    color: #666666; }
 */
 
+.controls {
+    text-align: center;
+}
+
 .grid-block, .main, .question {
-    background: #fff;
+    background: #eee;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
@@ -26,13 +38,7 @@
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
-body {
-    background: #eee;
-    color: #666666; }
-
 .question {
-    /* For modern browsers */
-    /* For IE 6/7 (trigger hasLayout) */
     *zoom: 1;
     -webkit-transition: all 300ms 0ms;
     -webkit-transition-delay: ease-in;

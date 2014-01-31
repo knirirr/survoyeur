@@ -54,7 +54,7 @@ Template.surveyItem.events({
       if (frc) {
         Errors.throw(frc.reason);
       } else {
-        Router.go('/');
+        Router.go("/survey/" + this._id + "/summary");
       }
     }
   }

@@ -1,10 +1,25 @@
 <template name="surveyItemSummary">
-  <p>These are the ratings and answers for survey &ldquo;{{this.title}}&rdquo;.</p>
-  <form name="questions" class="question-form">
-    <div class="questions">
-      {{#each questions}}
-        {{> questionSummaryItem }}
-      {{/each}}
+  <div class="panel panel-default">
+    <div class="panel-heading">Results for survey &ldquo;{{this.title}}&rdquo;</div>
+    <div class="panel-body">
+      <p>The results can be seen below, coming in live.</p>
     </div>
-  </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Questions</th>
+          <th>Answers received</th>
+          <th>Current rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each questions}}
+          {{> questionSummaryItem }}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <a class="btn btn-success" href="{{pathFor 'surveyList'}}">Back to the list of surveys</a>
+  </div>
 </template>

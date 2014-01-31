@@ -1,6 +1,9 @@
 <template name="surveyList">
+  <div class="jumbotron">
+    <h2>Take a survey...</h2>
+    <p class="lead">All available surveys are shown here &mdash; contain your excitement, and take a pick from the list below...</p>
+  </div>
   <div class="surveys">
-    <p>This is a list of all the available surveys.</p>
     {{#each surveys}}
       {{> surveyChoiceItem }}
     {{/each}}

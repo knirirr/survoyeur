@@ -9,14 +9,18 @@ Template.surveyChoiceItem.helpers({
   },
   alreadyTaken: function() {
     var questions = Questions.find({surveyId: this._id}).map(getid);
-    if (Answers.find({questionId: {$in: questions}}).count() > 0) {
+    if (Answers.find({questionId: {$in: questions}, userId: Meteor.userId()}).count() > 0) {
       return true;
     } else {
       return false;
     }
+  },
+  totalQuestions: function() {
+    return questions = Questions.find({surveyId: this._id}).count();
   }
+
 });
 
-function getid(thingy) {
-  return thingy._id;
+function getid(thing) {
+  return thing._id;
 }
