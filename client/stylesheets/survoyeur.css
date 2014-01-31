@@ -2,6 +2,7 @@
 
 #spinner { height: 350px }
 
+/*
 .navbar {
     margin-bottom: 10px; }
 .navbar .navbar-inner {
@@ -10,6 +11,7 @@
     -ms-border-radius: 0px 0px 3px 3px;
     -o-border-radius: 0px 0px 3px 3px;
     border-radius: 0px 0px 3px 3px; }
+*/
 
 .grid-block, .main, .question {
     background: #fff;
