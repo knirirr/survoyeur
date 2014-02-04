@@ -17,10 +17,10 @@ Meteor.methods({
     var question = Questions.findOne(ratingAttributes.questionId);
 
     if (!user)
-      throw new Meteor.error(401,"Only logged-in users may answer questions.");
+      throw new Meteor.Error(401,"Only logged-in users may answer questions.");
 
     if (!question)
-      throw new Meteor.error(422, "You may only rate a question.");
+      throw new Meteor.Error(422, "You may only rate a question.");
 
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
     if (oldRating) {
@@ -52,10 +52,10 @@ Meteor.methods({
     var question = Questions.findOne(ratingAttributes.questionId);
 
     if (!user)
-      throw new Meteor.error(401,"Only logged-in users may answer questions.");
+      throw new Meteor.Error(401,"Only logged-in users may answer questions.");
 
     if (!question)
-      throw new Meteor.error(422, "You may only rate a question.");
+      throw new Meteor.Error(422, "You may only rate a question.");
 
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
     if (oldRating) {

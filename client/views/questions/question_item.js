@@ -23,7 +23,7 @@ Template.questionItem.helpers({
     if (answer) {
       return answer.text;
     } else {
-      return "No answer!";
+      return "";
     }
   }
 });

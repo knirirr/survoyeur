@@ -1,0 +1,35 @@
+<template name="newSurvey">
+  <div class="jumbotron">
+    <h2>Create a new survey...</h2>
+    <p class="lead">Exercise the full power of your creativity and wit upon the form below.</p>
+  </div>
+  <form name="questions" class="question-form">
+    <div class="well">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Survey title</h3>
+            </div>
+            <div class="panel-body">
+              <div class="control-group full-width">
+                <div class="controls full-width">
+                  <input class="form-control full-width" name="survey-title" placeholder="Enter text..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="question-section">
+      <!-- each question here -->
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="button" id="moar" class="btn btn-lg btn-primary">Moar questions</button>
+        <button type="submit" class="btn btn-lg btn-success">Save answers</button>
+      </div>
+    </div>
+  </form>
+
+</template>

@@ -4,6 +4,9 @@
 
 #spinner { height: 350px }
 
+.btn.new_survey {width:25%; display:block; margin: 0 auto;}
+
+
 /*
 .navbar {
     margin-bottom: 10px; }

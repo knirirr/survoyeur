@@ -17,8 +17,10 @@ Template.surveyChoiceItem.helpers({
   },
   totalQuestions: function() {
     return questions = Questions.find({surveyId: this._id}).count();
+  },
+  isAdminUser: function() {
+    return Roles.userIsInRole(Meteor.user(), ['admin']);
   }
-
 });
 
 function getid(thing) {

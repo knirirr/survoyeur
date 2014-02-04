@@ -4,6 +4,8 @@
     "jquery-rateit": {},
     "spin": {},
     "bootstrap-3": {},
-    "accounts-ui-bootstrap-3": {}
+    "accounts-ui-bootstrap-3": {},
+    "npm": {},
+    "accounts-admin-ui-bootstrap-3": {}
   }
 }

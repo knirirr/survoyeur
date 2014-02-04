@@ -1,4 +1,4 @@
-if (Questions.find().count() === 0) {
+if (Surveys.find({title: "Tasty food survey"}) === null) {
 
   /*
   N.B. insert returns the id of the inserted record

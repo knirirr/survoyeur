@@ -8,4 +8,7 @@
       {{> surveyChoiceItem }}
     {{/each}}
   </div>
+  {{#if isAdminUser }}
+    <p><a class="btn btn-primary text-center new_survey" href="{{pathFor 'newSurvey'}}" role="button">Add new survey</a></p>
+  {{/if}}
 </template>
