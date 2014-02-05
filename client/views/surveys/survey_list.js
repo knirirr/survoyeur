@@ -5,7 +5,7 @@
 Template.surveyList.helpers({
   surveys: function() {
     console.log("survey_list.js, survey count: " + Surveys.find().count());
-    return Surveys.find();
+    return Surveys.find({},{sort: {created: 1}});
   },
   // check if user is an admin
   isAdminUser: function() {

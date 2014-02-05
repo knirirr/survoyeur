@@ -1,4 +1,4 @@
-if (Surveys.find({title: "Tasty food survey"}) === null) {
+if (Surveys.find().count() == 0) {
 
   /*
   N.B. insert returns the id of the inserted record
@@ -8,17 +8,21 @@ if (Surveys.find({title: "Tasty food survey"}) === null) {
 
   var s1 = Surveys.insert({
     title: "Tasty food survey",
+    about: "This survey seeks your opinion on the relative awesomeness of pies and cakes. These, together with beer and whisky, form the only feast a gentleman need consider.",
+    created: new Date().getTime(),
     questions: []
   });
 
   var q1 = Questions.insert({
     title:  "How much do you like pies? ",
+    number: 1,
     surveyId: s1,
     ratings: [],
     answers: []
   });
   var q2 = Questions.insert({
     title:  "How about cakes? ",
+    number: 2,
     surveyId: s1,
     ratings: [],
     answers: []

@@ -8,8 +8,11 @@ Template.surveyItem.helpers({
     console.log("ID used: " + this._id);
     console.log("Questions: " + Questions.find({surveyId: this._id}).count());
     //console.log("Questions: " + Questions.find({}).count());
-    return Questions.find({surveyId: this._id});
+    return Questions.find({surveyId: this._id},{$sort: {number: -1}});
     //return Questions.find({});
+  },
+  aboutSurvey: function() {
+    return this.about;
   }
 });
 
@@ -59,3 +62,4 @@ Template.surveyItem.events({
     }
   }
 });
+

@@ -1,7 +1,7 @@
 <template name="surveyItem">
   <div class="jumbotron">
     <h2>{{this.title}}</h2>
-    <p class="lead">This survey seeks your opinion on the relative awesomeness of pies and cakes. These, together with beer and whisky, form the only feast a gentleman need consider.</p>
+    <p class="lead">{{aboutSurvey}}</p>
   </div>
   <form name="questions" class="question-form">
     {{#each questions}}
