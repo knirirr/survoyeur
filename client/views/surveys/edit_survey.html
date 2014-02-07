@@ -1,0 +1,63 @@
+<template name="editSurvey">
+  <div class="jumbotron">
+    <h2>Edit survey &ldquo;{{this.title}}&rdquo;</h2>
+    <p class="lead">Is your survey not exciting enough already? Not to worry, for you may correct this below!</p>
+  </div>
+  <form name="questions" class="question-form">
+    <div class="well">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Survey title</h3>
+            </div>
+            <div class="panel-body">
+              <div class="control-group full-width">
+                <div class="controls full-width">
+                  <input class="form-control full-width" name="survey-title" placeholder="Enter text..." value="{{this.title}}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Survey description</h3>
+            </div>
+            <div class="panel-body">
+              <div class="control-group full-width">
+                <div class="controls full-width">
+                  <input class="form-control full-width" name="survey-description" placeholder="Enter text..." value="{{this.about}}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="question-section">
+        <!-- each question here -->
+        {{#each questions}}
+          {{> questionEdit }}
+        {{/each}}
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <div class="row">
+            <div class="col-md-4">
+              <button type="button" id="moar" class="btn btn-lg btn-primary full-width">Moar questions</button>
+            </div>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-lg btn-success full-width">Save answers</button>
+            </div>
+            <div class="col-md-4">
+              <button type="button" id="purge" class="btn btn-lg btn-danger full-width">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
