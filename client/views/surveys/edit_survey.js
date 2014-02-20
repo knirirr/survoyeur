@@ -12,7 +12,6 @@ Template.editSurvey.helpers({
 
 Template.editSurvey.events({
   'click #moar': function(e) {
-    //alert("Moar buttong clicked!");
     questionNumber = Session.get('questionNumber');
     Session.set('questionNumber', questionNumber + 1);
     $("#question-section").append(Template[ 'someQuestions' ]());

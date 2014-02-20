@@ -3,7 +3,7 @@
  */
 Template.surveyItemSummary.helpers({
   questions: function() {
-    return Questions.find();
+    return Questions.find({surveyId: this._id});
   }
 });
 

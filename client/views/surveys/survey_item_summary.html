@@ -1,5 +1,5 @@
 <template name="surveyItemSummary">
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
     <div class="panel-heading">Results for survey &ldquo;{{this.title}}&rdquo;</div>
     <div class="panel-body">
       <p>The results can be seen below, coming in live.</p>
@@ -18,6 +18,11 @@
         {{/each}}
       </tbody>
     </table>
+  </div>
+  <div id="answers">
+    {{#each questions}}
+      {{> questionAnswerItem}}
+    {{/each}}
   </div>
   <div class="text-center">
     <a class="btn btn-success" href="{{pathFor 'surveyList'}}">Back to the list of surveys</a>
