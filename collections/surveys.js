@@ -40,5 +40,9 @@ Meteor.methods({
     console.log("Survey id is " + surveyId);
 
     return surveyId;
+  },
+  spurge: function(id) {
+    Surveys.remove({_id: id});
   }
+
 });

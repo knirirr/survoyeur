@@ -17,6 +17,31 @@ Template.editSurvey.events({
     Session.set('questionNumber', questionNumber + 1);
     $("#question-section").append(Template[ 'someQuestions' ]());
   },
+  'click #purge': function(e) {
+    var sure = confirm("Delete this survey? Are you sure? This cannot be undone.");
+    if (sure == false) {
+      return;
+    }
+    questions = Questions.find({surveyId: this._id});
+    questions.forEach(function(q){
+      console.log("Question: " + q._id);
+      answers = Answers.find({questionId: q._id});
+      answers.forEach(function(a){
+        console.log("Answer: " + a._id);
+        Meteor.call('apurge', a._id);
+      });
+      ratings = Ratings.find({questionId: q._id});
+      ratings.forEach(function(r){
+        console.log("Rating: " + r._id);
+        Meteor.call('rpurge', r._id);
+      });
+      // delete the question...
+      Meteor.call('qpurge', q._id);
+    });
+    //...and delete the survey
+    Meteor.call('spurge',this._id);
+    Router.go("/surveys");
+  },
   'submit form': function(e, template) {
     e.preventDefault();
     /*

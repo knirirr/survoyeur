@@ -42,5 +42,8 @@ Meteor.methods({
     /*
     N.B. there's not any means for users to delete questions at present...
      */
+  },
+  apurge: function(id) {
+    Answers.remove({_id: id});
   }
 });

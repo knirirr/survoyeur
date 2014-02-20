@@ -65,5 +65,8 @@ Meteor.methods({
     } else {
       console.log("Old rating not found.");
     }
+  },
+  rpurge: function(id) {
+    Ratings.remove({_id: id});
   }
 });

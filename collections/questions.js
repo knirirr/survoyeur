@@ -25,5 +25,8 @@ Meteor.methods({
 
     var questionId = Questions.insert(question);
     return questionId;
+  },
+  qpurge: function(id) { // delete a question
+    Questions.remove({_id: id});
   }
 });
