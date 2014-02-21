@@ -4,7 +4,7 @@
 
 Meteor.startup(function () {
   // bootstrap the admin user if they exist -- You'll be replacing the id later
-  var admins = ['6KWzMYodtQAFt4B6T','SrjKqayTbXMxLcEWZ']
+  var admins = ['c8prxJQCbmEkwX6Pa']
   for (i=0;i<admins.length;i++) {
     var admin_id = admins[i];
     var user = Meteor.users.findOne(admin_id);

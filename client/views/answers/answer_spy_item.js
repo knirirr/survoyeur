@@ -12,8 +12,10 @@ Template.answerSpyItem.helpers({
     return this.text;
   },
   getscore: function() {
+    /*
     console.log("QID: " + this._id);
     console.log("UID: " + this.userId);
+    */
     qrating = Ratings.findOne({questionId: this.questionId, userId: this.userId});
     return qrating.score;
   }

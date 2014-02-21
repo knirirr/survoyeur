@@ -27,6 +27,10 @@ Meteor.methods({
     return questionId;
   },
   qpurge: function(id) { // delete a question
-    Questions.remove({_id: id});
+    if (isOwner(Meteor.user()._id || Roles.userIsInRole(Meteor.user(), ['admin']))) {
+      Questions.remove({_id: id});
+    } else {
+      console.log("Naughty!");
+    }
   }
 });

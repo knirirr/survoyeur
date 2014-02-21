@@ -67,6 +67,11 @@ Meteor.methods({
     }
   },
   rpurge: function(id) {
-    Ratings.remove({_id: id});
+    // is owner
+    if (isOwner(Meteor.user()._id || Roles.userIsInRole(Meteor.user(), ['admin']))) {
+      Ratings.remove({_id: id});
+    } else {
+      console.log("Naughty!");
+    }
   }
 });

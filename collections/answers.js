@@ -44,6 +44,10 @@ Meteor.methods({
      */
   },
   apurge: function(id) {
-    Answers.remove({_id: id});
+    if (isOwner(Meteor.user()._id || Roles.userIsInRole(Meteor.user(), ['admin']))) {
+      Answers.remove({_id: id});
+    } else {
+      console.log("Naughty!");
+    }
   }
 });

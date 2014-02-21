@@ -42,7 +42,11 @@ Meteor.methods({
     return surveyId;
   },
   spurge: function(id) {
-    Surveys.remove({_id: id});
+    if (Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      Surveys.remove({_id: id});
+    } else {
+      console.log("Naughty!");
+    }
   }
 
 });
