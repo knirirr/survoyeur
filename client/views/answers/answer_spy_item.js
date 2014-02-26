@@ -19,11 +19,17 @@ Template.answerSpyItem.events({
     var answerId = parts[parts.length-1];
     $("#comment-form-" + answerId).remove();
   },
+  /*
+  This stops the forms submitting unless the button is clicked
+   */
   'submit form': function(e,template) {
-    e.preventDefault(); // doesn't work
+    e.preventDefault();
+    return false;
+  },
+  'click .submit-form': function() {
     var parts = event.target.id.split("-");
     var answerId = parts[parts.length-1];
-    var $text = $(e.target).find('[id=answer-comment-' + this._id + ']');
+    var $text = $('#answer-comment-' + answerId);
     console.log("Got comment text: " + $text.val());
     var comment = {
       text: $text.val(),
