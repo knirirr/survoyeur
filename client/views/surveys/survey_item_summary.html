@@ -2,7 +2,8 @@
   <div class="panel panel-primary">
     <div class="panel-heading">Results for survey &ldquo;{{this.title}}&rdquo;</div>
     <div class="panel-body">
-      <p>The results can be seen below, coming in live.</p>
+      <p>The results can be seen below, coming in live. You may comment on anyone's answer by clicking on the comment
+      button next to each post (shaped like a pencil). </p>
     </div>
     <table class="table">
       <thead>
@@ -19,11 +20,13 @@
       </tbody>
     </table>
   </div>
-  <div id="answers">
-    {{#each questions}}
-      {{> questionAnswerItem}}
-    {{/each}}
-  </div>
+  {{#if isLoggedIn }}
+    <div id="answers">
+      {{#each questions}}
+        {{> questionAnswerItem}}
+      {{/each}}
+    </div>
+  {{/if}}
   <div class="text-center">
     <a class="btn btn-success" href="{{pathFor 'surveyList'}}">Back to the list of surveys</a>
   </div>

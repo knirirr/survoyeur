@@ -22,8 +22,9 @@ Meteor.methods({
         console.log("Changing existing answer from " + oldAnswer.text + " to " + answerAttributes.text + ".");
         Answers.update(oldAnswer._id,{$set: {text: answerAttributes.text}})
       } else {
-        console.log("Answer unchanged at: " + oldAnswer.answer);
+        console.log("Answer unchanged at: " + oldAnswer.text);
       }
+
       return oldAnswer._id;
     } else {
       console.log("Old answer not found.");
@@ -31,7 +32,8 @@ Meteor.methods({
 
     answer = _.extend(_.pick(answerAttributes, 'questionId','text'), {
       userId: user._id,
-      submitted: new Date().getTime()
+      submitted: new Date().getTime(),
+      comments: []
     });
 
     console.log("Answer: " + answer.userId + "/" + answer.submitted);
@@ -43,8 +45,15 @@ Meteor.methods({
     N.B. there's not any means for users to delete questions at present...
      */
   },
+  /*
+  answerRemoveComment: function(answerAttributes) {
+    oldAnswer = Answers.find({_id: answerAttributes.answerId})
+    Answers.update(oldAnswer, {$pull: {comments: answerAttributes.commentId}});
+  },
+  */
   apurge: function(id) {
-    if (isOwner(Meteor.user()._id || Roles.userIsInRole(Meteor.user(), ['admin']))) {
+    var answer = Answers.findOne({_id: id});
+    if (isOwner(Meteor.user()._id,answer) || Roles.userIsInRole(Meteor.user(), ['admin'])) {
       Answers.remove({_id: id});
     } else {
       console.log("Naughty!");

@@ -1,8 +1,19 @@
 <template name="answerSpyItem">
+
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">{{user}}</h3>
+      <div class="row">
+        <div class="col-lg-11">
+          <h3 class="panel-title">{{user}}</h3>
+        </div>
+        <div class="col-lg-1">
+          <button type="button" class="add-form close">
+            <span class="glyphicon glyphicon-pencil" id="comment-on-{{this._id}}"></span>
+          </button>
+        </div>
+      </div>
     </div>
+
     <div class="panel-body">
       <div class="row">
         <div class="col-lg-11">
@@ -11,7 +22,31 @@
         <div class="col-lg-1">
           <span class="alignright">{{getscore}}</span>
         </div>
+
       </div>
     </div>
   </div>
+
+  <!-- comments on each post to go here -->
+  <div id="existing-comments-{{this._id}}">
+    {{#each comments}}
+      {{> commentItem}}
+    {{/each}}
+  </div>
+  <div id="comments-section-{{this._id}}">
+
+  </div>
+
+
+  <!--
+  <div class="well well-sm">
+    <div id="add-comments">
+
+    </div>
+    <div class="comment-button text-center">
+      <button class="btn btn-primary btn-sm" id="comment-on-{{this._id}}">Comment</button>
+    </div>
+  </div>
+  -->
+
 </template>

@@ -7,6 +7,7 @@ Sets up all the rating widgets.
  */
 Template.questionItem.rendered = function() {
   $(this.findAll('.rateit')).rateit();
+  //$('.rateit').rateit();
 }
 
 Template.questionItem.helpers({
@@ -52,6 +53,7 @@ than 0 and therefore don't skew the average.
 See collections/ratings.js for the Meteor methods.
  */
 function doRating(score,questionId) {
+  $('#' + questionId).rateit('value',score);
   var rating = {
     score: score,
     questionId: questionId

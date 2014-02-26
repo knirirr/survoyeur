@@ -29,8 +29,10 @@ Template.surveyItem.events({
     $.each( $("[name^='answer-']"), function () {
       var questionId = this.name.split("-")[1];
       var answerText = this.value;
+      /*
       console.log("Answer text: " + answerText);
       console.log("Question id: " + questionId);
+      */
       if (answerText) {
         goodResponse[questionId] = answerText;
       } else {

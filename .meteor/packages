@@ -6,7 +6,6 @@
 preserve-inputs
 iron-router
 standard-app-packages
-jquery-rateit
 spin
 accounts-password
 bootstrap-3
@@ -14,3 +13,4 @@ accounts-ui-bootstrap-3
 accounts-admin-ui-bootstrap-3
 roles
 bootstrap-errors
+jquery-rateit

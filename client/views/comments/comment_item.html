@@ -1,0 +1,26 @@
+<template name="commentItem">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-11">
+              <h3 class="panel-title">{{user}}</h3>
+            </div>
+            <div class="col-lg-1">
+              {{#if checkOwner}}
+              <button type="button" class="remove-comment close">
+                <span class="glyphicon glyphicon-remove" id="remove-comment-{{this._id}}"></span>
+              </button>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          {{commentText}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

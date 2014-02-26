@@ -23,6 +23,7 @@ Meteor.methods({
       throw new Meteor.Error(422, "You may only rate a question.");
 
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
+    console.log("Looked for rating for question: " + question._id + " user " + user._id);
     if (oldRating) {
       console.log("oldRating: " + oldRating._id);
       if (oldRating.score != ratingAttributes.score) {
@@ -59,8 +60,8 @@ Meteor.methods({
 
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
     if (oldRating) {
+      Questions.update(question,{$pull: {ratings: oldRating._id}});
       Ratings.remove(oldRating._id);
-      Questions.update(question,{$pull: {ratings: ratingId}});
       console.log("Rating " + oldRating._id + " purged.");
     } else {
       console.log("Old rating not found.");
@@ -68,7 +69,8 @@ Meteor.methods({
   },
   rpurge: function(id) {
     // is owner
-    if (isOwner(Meteor.user()._id || Roles.userIsInRole(Meteor.user(), ['admin']))) {
+    var rating = Ratings.findOne({_id: id});
+    if (isOwner(Meteor.user()._id,rating) || Roles.userIsInRole(Meteor.user(), ['admin'])) {
       Ratings.remove({_id: id});
     } else {
       console.log("Naughty!");

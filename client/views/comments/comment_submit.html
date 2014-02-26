@@ -1,0 +1,36 @@
+<template name="commentSubmit">
+  <div class="row" id="comment-form-{{answerId}}">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+      <form name="comment" id="actual-comment-form-{{answerId}}">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-10">
+                <h3 class="panel-title">Comment on this answer</h3>
+              </div>
+              <div class="col-md-1">
+                <button type="button" class="delete-form close">
+                  <span class="glyphicon glyphicon-remove" id="delete-form-{{answerId}}"></span>
+                </button>
+              </div>
+              <div class="col-md-1">
+                <button type="submit" class="submit-form close">
+                  <span class="glyphicon glyphicon-check" id="submit-form-{{answerId}}"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="control-group">
+              <div class="controls">
+                <input class="form-control full-width"  id="answer-comment-{{answerId}}" placeholder="Enter your comment here...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
