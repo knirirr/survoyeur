@@ -25,12 +25,14 @@ Meteor.methods({
 
     comment = _.extend(_.pick(commentAttributes, 'answerId','text'), {
       userId: user._id,
+      author: user.emails[0].address,
       submitted: new Date().getTime()
     });
 
     var commentId = Comments.insert(comment);
-    //console.log("Comment: " + commentId + " answer " + answer._id);
+    console.log("Comment: " + commentId + " answer " + answer._id);
     //Answers.update(answer,{$addToSet: {comments: commentId}});
+    createCommentNotification(comment);
     return commentId;
   },
   cpurge: function(id) {

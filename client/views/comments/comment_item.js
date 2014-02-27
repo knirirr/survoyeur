@@ -24,7 +24,7 @@ Template.commentItem.helpers({
     return this.text;
   },
   checkOwner: function () {
-    console.log("Comment: " + this._id + " user: " + Meteor.user()._id + " isOwner " + isOwner(this.userId, this));
+    //console.log("Comment: " + this._id + " user: " + Meteor.user()._id + " isOwner " + isOwner(this.userId, this));
     return isOwner(Meteor.user()._id,this);
   }
 });

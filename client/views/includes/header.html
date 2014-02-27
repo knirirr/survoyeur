@@ -9,6 +9,11 @@
         <li class="active"><a href="#">Wibble!</a></li>
         <li><a href="#">F'tang!</a></li>
         -->
+        {{#if currentUser }}
+          <li>
+            {{> notifications }}
+          </li>
+        {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{ loginButtons }}

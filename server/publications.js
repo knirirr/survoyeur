@@ -22,6 +22,10 @@ Meteor.publish('comments', function() {
   return Comments.find();
 })
 
+Meteor.publish('notifications', function() {
+  return Notifications.find();
+})
+
 Meteor.publish('surveyQuestions', function(id) {
   return id && Questions.find({surveyId: id});
 })
