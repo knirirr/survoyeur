@@ -2,6 +2,9 @@
  * Created by milo on 27/02/2014.
  */
 
+/*
+No way of deleting these is implemented yet...
+ */
 Notifications = new Meteor.Collection('notifications');
 
 Notifications.allow({

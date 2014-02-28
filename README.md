@@ -13,6 +13,6 @@ Instructions
 Does this look familiar?
 ------------------------
 
-It just so happens that the use case for this app results in something quite close to "Microscope" in the [Discover Meteor](https://www.discovermeteor.com/) book, and so quite a few bits are very similar to that. For example, comments on survey answers, when added soon, will be pretty much the same thing. The main difference is that instead of users posting links to be discussed, admins will post surveys to be answered and rated, and the users will discuss each other's answers to the questions. 
+It just so happens that the use case for this app results in something quite close to "Microscope" in the [Discover Meteor](https://www.discovermeteor.com/) book, and so quite a few bits are very similar to that. For example, comments on survey answers are pretty much a direct plagiarisation. The main difference is that instead of users posting links to be discussed, admins will post surveys to be answered and rated, and the users will discuss each other's answers to the questions.
 
 Also, the authors of that book will have written much better code than me, obviously. 
