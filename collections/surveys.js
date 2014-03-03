@@ -20,6 +20,8 @@ Meteor.methods({
       var oldSurvey = Surveys.findOne({_id: surveyAttributes._id});
       if (oldSurvey) {
         console.log("oldSurvey: " + oldSurvey._id);
+        Surveys.update(oldSurvey._id, surveyAttributes);
+        // don't re-add questions...
         Surveys.update(oldSurvey._id,{$addToSet: {questions: surveyAttributes.questionId}})
         return oldSurvey._id;
       } else {

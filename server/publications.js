@@ -23,7 +23,11 @@ Meteor.publish('comments', function() {
 })
 
 Meteor.publish('notifications', function() {
-  return Notifications.find({userId: this.userId});
+  if (this.userId) {
+    return Notifications.find({userId: this.userId});
+  } else {
+    return Notifications.find({userId: 'no_such_user'}); // to prevent hanging when user not logged in
+  }
 })
 
 Meteor.publish('surveyQuestions', function(id) {

@@ -68,9 +68,9 @@ Template.editSurvey.events({
     });
     // submit
     if (moar == 1) {
-      // create a survey
       console.log("Title: " + title);
       var survey = {
+        _id: this._id,
         title: title,
         about: about
       }

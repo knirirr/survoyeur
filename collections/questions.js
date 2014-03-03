@@ -18,7 +18,21 @@ Meteor.methods({
     if(!Roles.userIsInRole(user, ['admin']))
       throw new Meteor.Error(403,"Only an admin may create a question.");
 
-    question = _.extend(_.pick(questionAttributes, 'title', 'surveyId', 'number'), {
+    // begin checking for existing question
+    if (questionAttributes._id) {
+      var oldQuestion = Questions.findOne({_id: questionAttributes._id});
+      if (oldQuestion) {
+        console.log("oldQuestion: " + oldQuestion._id);
+        Questions.update(oldQuestion._id, questionAttributes);
+        // don't re-add questions...
+        return oldQuestion._id;
+      } else {
+        console.log("Old question not found.");
+      }
+    }
+    // end
+
+    question = _.extend(_.pick(questionAttributes, 'title', 'surveyId', 'number','hideRating','hideComments'), {
       ratings: [],
       answers: []
     });
@@ -30,6 +44,10 @@ Meteor.methods({
     var question = Questions.findOne({_id: id});
     if (isOwner(Meteor.user()._id,question) || Roles.userIsInRole(Meteor.user(), ['admin'])) {
       Questions.remove({_id: id});
+      /*
+      var survey = Surveys.find({questions: {$in: [id]}});
+      Surveys.update(survey,{questions: {$pull: id}})
+      */
     } else {
       console.log("Naughty!");
     }

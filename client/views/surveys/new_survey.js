@@ -66,6 +66,11 @@ Template.newSurvey.events({
             title: text,
             number: key,
             surveyId: survey._id
+            /*
+            ,
+            hideRating: $('#hide-rating-' + key).attr('checked'),
+            hideComments: $('#hide-comments-' + key).attr('checked')
+            */
           }
           console.log("Question: " + question.text + ", " + question.surveyId);
           Meteor.call('question', question, function(error,newQuestionId) {
