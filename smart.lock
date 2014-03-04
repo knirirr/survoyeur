@@ -8,7 +8,8 @@
       "accounts-ui-bootstrap-3": {},
       "accounts-admin-ui-bootstrap-3": {},
       "bootstrap-errors": {},
-      "jquery-rateit": {}
+      "jquery-rateit": {},
+      "cfs-filesaver": {}
     },
     "packages": {
       "iron-router": {
@@ -45,6 +46,11 @@
         "git": "https://github.com/dandv/meteor-jquery-rateit.git",
         "tag": "v1.0.20-2",
         "commit": "c83897aabbddf990430c3515a69336853cf175c5"
+      },
+      "cfs-filesaver": {
+        "git": "https://github.com/CollectionFS/Meteor-cfs-filesaver.git",
+        "tag": "v0.0.2",
+        "commit": "734135c99e997b84f9de722a5caa0a59c98cff8c"
       },
       "roles": {
         "git": "https://github.com/alanning/meteor-roles.git",

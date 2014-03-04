@@ -5,7 +5,7 @@
       <p>The results can be seen below, coming in live. You may comment on anyone's answer by clicking on the comment
       button next to each post (shaped like a pencil). </p>
     </div>
-    <table class="table">
+    <table class="table" id="results-summary">
       <thead>
         <tr>
           <th>Questions</th>
@@ -27,7 +27,17 @@
       {{/each}}
     </div>
   {{/if}}
-  <div class="text-center">
-    <a class="btn btn-success" href="{{pathFor 'surveyList'}}">Back to the list of surveys</a>
-  </div>
+
+  {{#if isAdminUser }}
+    <div class="text-center">
+      <div class="btn-group-lg">
+        <a class="btn btn-success" href="{{pathFor 'surveyList'}}">Back to the list of surveys</a>
+        <button class="btn btn-primary" id="download">Download as text</button>
+      </div>
+    </div>
+  {{else}}
+    <div class="text-center">
+      <a class="btn btn-success" href="{{pathFor 'surveyList'}}">Back to the list of surveys</a>
+    </div>
+  {{/if}}
 </template>

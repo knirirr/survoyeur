@@ -65,7 +65,7 @@ Meteor.publish('allSurveyAnswers', function(id) {
 })
 
 Meteor.publish("directory", function () {
-  return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
+  return Meteor.users.find({}, {fields: {_id: 1, emails: 1, profile: 1}});
 });
 
 /*
