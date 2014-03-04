@@ -50,9 +50,9 @@ Template.surveyItemSummary.events({
 
     });
     // send it to the browser
-    var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
-    saveAs(blob, question._id + "_results.csv");
    });
+   var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+   saveAs(blob, this._id + "_results.csv");
   }
 })
 
