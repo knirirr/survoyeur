@@ -42,8 +42,9 @@ Template.surveyItem.events({
 
     if (noResponse.length > 0) {
       // chastise the user
-      alert("You must complete all the fields!");
-    } else {
+      alert("Some fields are not complete. Please come back later to complete them");
+    }
+    //} else {
       //submit the form
       var frc = null;
       for (var key in goodResponse) {
@@ -61,7 +62,7 @@ Template.surveyItem.events({
       } else {
         Router.go("/survey/" + this._id + "/summary");
       }
-    }
+    //}
   }
 });
 
