@@ -41,8 +41,17 @@ Template.editSurvey.events({
     Meteor.call('spurge',this._id);
     Router.go("/surveys");
   },
+  /*
+  This is here as I can't find any other way of stopping the form from submitting on 'enter'.
+   */
   'submit form': function(e, template) {
     e.preventDefault();
+    return;
+  },
+  /*
+  This actually submits the form.
+   */
+  'click #submit': function(e) {
     /*
      Do some processing of the contents of the form...
      */
@@ -68,7 +77,7 @@ Template.editSurvey.events({
     });
     // submit
     if (moar == 1) {
-      console.log("Title: " + title);
+      //console.log("Title: " + title);
       var survey = {
         _id: this._id,
         title: title,
@@ -80,12 +89,12 @@ Template.editSurvey.events({
           return;
         } else {
           survey._id = newSurveyId;
-          console.log("New survey: " + newSurveyId);
+          //console.log("New survey: " + newSurveyId);
           if (!newSurveyId) {
             Errors.throw("Survey not created!");
             return;
           } else {
-            console.log("Survey created: " + newSurveyId);
+            //console.log("Survey created: " + newSurveyId);
           }
           // create questions between here...
           // create questions
@@ -99,7 +108,6 @@ Template.editSurvey.events({
                 number: key,
                 surveyId: survey._id
               }
-              console.log("Question: " + question.text + ", " + question.surveyId);
               Meteor.call('question', question, function(error,newQuestionId) {
                 if (error) {
                   Errors.throw(error.reason);

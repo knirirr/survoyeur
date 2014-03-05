@@ -4,6 +4,14 @@
 
 Template.someQuestions.helpers({
   questionNumber: function() {
-    return Session.get("questionNumber");
+    if (Session.get("questionNumber")) {
+      return Session.get("questionNumber")
+    } else {
+      length = $("[name^='question-text-']").length + 1;
+      return  length;
+    }
+  },
+  'submit form': function(e, template) {
+    e.preventDefault();
   }
 });

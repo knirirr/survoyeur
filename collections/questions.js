@@ -22,16 +22,21 @@ Meteor.methods({
     if (questionAttributes._id) {
       var oldQuestion = Questions.findOne({_id: questionAttributes._id});
       if (oldQuestion) {
-        console.log("oldQuestion: " + oldQuestion._id);
+        //console.log("oldQuestion by id: " + oldQuestion._id);
         Questions.update(oldQuestion._id, questionAttributes);
         // don't re-add questions...
         return oldQuestion._id;
       } else {
-        console.log("Old question not found.");
+        //console.log("Old question not found.");
       }
     }
     // end
-
+    var oldQuestion = Questions.findOne({title: questionAttributes.title})
+    if (oldQuestion) {
+      //console.log("oldQuestion by text: " + oldQuestion._id);
+      Questions.update(oldQuestion._id, questionAttributes);
+      return oldQuestion._id;
+    }
     question = _.extend(_.pick(questionAttributes, 'title', 'surveyId', 'number','hideRating','hideComments'), {
       ratings: [],
       answers: []

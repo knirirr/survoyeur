@@ -7,7 +7,7 @@ Surveys = new Meteor.Collection('surveys');
 Meteor.methods({
   survey: function(surveyAttributes) {
     var user = Meteor.user();
-    console.log("ID passed: " + surveyAttributes._id);
+    //console.log("ID passed: " + surveyAttributes._id);
 
     if (!user)
       throw new Meteor.Error(401,"You must log in to create a survey.");
@@ -19,7 +19,7 @@ Meteor.methods({
     if (surveyAttributes._id) {
       var oldSurvey = Surveys.findOne({_id: surveyAttributes._id});
       if (oldSurvey) {
-        console.log("oldSurvey: " + oldSurvey._id);
+        //console.log("oldSurvey: " + oldSurvey._id);
         Surveys.update(oldSurvey._id, surveyAttributes);
         // don't re-add questions...
         Surveys.update(oldSurvey._id,{$addToSet: {questions: surveyAttributes.questionId}})
@@ -35,11 +35,11 @@ Meteor.methods({
       created: new Date().getTime()
     });
 
-    console.log("Survey title is " + survey.title);
+    //console.log("Survey title is " + survey.title);
 
     var surveyId = Surveys.insert(survey);
 
-    console.log("Survey id is " + surveyId);
+    //console.log("Survey id is " + surveyId);
 
     return surveyId;
   },

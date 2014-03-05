@@ -22,10 +22,13 @@ Template.questionItem.helpers({
   lastAnswer: function() {
     var answer = Answers.findOne({questionId:this._id, userId: Meteor.userId()});
     if (answer) {
-      return answer.text;
+      return answer.text.replace(/\n/g,'<br>');
     } else {
       return "";
     }
+  },
+  getTitle: function() {
+    return this.title.replace(/\n/g,'<br>');
   }
 });
 

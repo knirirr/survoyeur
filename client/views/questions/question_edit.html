@@ -5,11 +5,11 @@
         <div class="panel-heading">
           <div class="row">
            <div class="col-md-10">
-             <h3 class="panel-title" name="question-title-{{this.number}}">Question #{{this.number}}</h3>
+             <h3 class="panel-title" name="question-title-{{qnumber}}">Question #{{qnumber}}</h3>
            </div>
            <div class="col-md-2">
              <button type="button" class="close">
-               <span class="glyphicon glyphicon-remove" id="delete-{{this.number}}"></span>
+               <span class="glyphicon glyphicon-remove" id="delete-{{qnumber}}"></span>
              </button>
            </div>
           </div>
@@ -17,7 +17,7 @@
         <div class="panel-body">
           <div class="control-group full-width">
             <div class="controls full-width">
-              <input class="form-control full-width" name="question-text-{{this.number}}" placeholder="Enter text..." value="{{this.title}}">
+              <textarea class="form-control full-width" name="question-text-{{qnumber}}" placeholder="Enter text..." value="{{this.title}}"></textarea>
             </div>
           </div>
         </div>
