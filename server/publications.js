@@ -1,5 +1,5 @@
 Meteor.publish('surveys',function() {
-  return Surveys.find();
+  return Surveys.find({},{$sort: {_id: -1}});
 })
 
 Meteor.publish('singleSurvey', function(id) {
@@ -7,7 +7,7 @@ Meteor.publish('singleSurvey', function(id) {
 });
 
 Meteor.publish('questions', function() {
-  return Questions.find();
+  return Questions.find({},{$sort: {number: -1}});
 });
 
 Meteor.publish('ratings', function() {
@@ -31,7 +31,7 @@ Meteor.publish('notifications', function() {
 })
 
 Meteor.publish('surveyQuestions', function(id) {
-  return id && Questions.find({surveyId: id});
+  return id && Questions.find({surveyId: id},{$sort: {number: -1}});
 })
 
 Meteor.publish('surveyRatings', function(id) {
