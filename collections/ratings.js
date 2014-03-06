@@ -23,18 +23,18 @@ Meteor.methods({
       throw new Meteor.Error(422, "You may only rate a question.");
 
     var oldRating = Ratings.findOne({questionId: question._id, userId: user._id});
-    console.log("Looked for rating for question: " + question._id + " user " + user._id);
+    //console.log("Looked for rating for question: " + question._id + " user " + user._id);
     if (oldRating) {
-      console.log("oldRating: " + oldRating._id);
+      //console.log("oldRating: " + oldRating._id);
       if (oldRating.score != ratingAttributes.score) {
-        console.log("Changing existing rating from " + oldRating.score + " to " + ratingAttributes.score + ".");
+        //console.log("Changing existing rating from " + oldRating.score + " to " + ratingAttributes.score + ".");
         Ratings.update(oldRating._id,{$set: {score: ratingAttributes.score}})
       } else {
-        console.log("Rating unchanged at: " + oldRating.score);
+        //console.log("Rating unchanged at: " + oldRating.score);
       }
       return oldRating._id;
     } else {
-      console.log("Old rating not found.");
+      //console.log("Old rating not found.");
     }
 
     rating = _.extend(_.pick(ratingAttributes, 'questionId','score'), {
@@ -42,7 +42,7 @@ Meteor.methods({
       submitted: new Date().getTime()
     });
 
-    console.log("Rating: " + rating.userId + "/" + rating.submitted);
+    //console.log("Rating: " + rating.userId + "/" + rating.submitted);
 
     var ratingId = Ratings.insert(rating);
     Questions.update(question,{$addToSet: {ratings: ratingId}});
@@ -62,9 +62,9 @@ Meteor.methods({
     if (oldRating) {
       Questions.update(question,{$pull: {ratings: oldRating._id}});
       Ratings.remove(oldRating._id);
-      console.log("Rating " + oldRating._id + " purged.");
+      //console.log("Rating " + oldRating._id + " purged.");
     } else {
-      console.log("Old rating not found.");
+      //console.log("Old rating not found.");
     }
   },
   rpurge: function(id) {

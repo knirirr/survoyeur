@@ -67,13 +67,16 @@ Template.editSurvey.events({
       return;
     }
     var questions = {};
+    var qids = {};
     $.each( $("[name^='question-text-']"), function () {
       var questionRef = this.name.split("-").slice(-1)[0];
       var questionText = this.value; // this returns DOM and not jquery object...
+      var questionId = this.id;
       if (questionText ) {
         moar = 1;
       }
       questions[questionRef] = questionText;
+      qids[questionRef] = questionId;
     });
     // submit
     if (moar == 1) {
@@ -102,11 +105,26 @@ Template.editSurvey.events({
             var text = questions[key];
             if (text) {
               // create a question with this value
-              console.log("Question " + key + " value is " + text);
-              var question = {
-                title: text,
-                number: key,
-                surveyId: survey._id
+              //console.log("Question " + key + " value is " + text);
+              //console.log("Key: " + key);
+              var question;
+              oldq = qids[key];
+              //console.log("OLDQ: " + oldq);
+              if (oldq) {
+                console.log("Got old question: " + oldq);
+                 question = {
+                  _id: oldq,
+                  title: text,
+                  number: key,
+                  surveyId: survey._id
+                }
+              } else {
+                console.log("No oldq found");
+                question = {
+                  title: text,
+                  number: key,
+                  surveyId: survey._id
+                }
               }
               Meteor.call('question', question, function(error,newQuestionId) {
                 if (error) {
