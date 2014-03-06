@@ -17,13 +17,16 @@ Template.notification.helpers({
     it does at least get the user to the correct page...
      */
     //console.log("Notification: " + this._id + " " + this.answerId);
+    /*
     answer = Answers.findOne({_id: this.answerId});
     //console.log("Answer: " + answer._id);
     question = Questions.findOne({answers: {$in: [answer._id]}});
     //console.log("Question: " + question._id);
     survey = Surveys.findOne({questions: {$in: [question._id]}});
+    */
     //console.log("Survey: " + survey._id);
-    return "/survey/" + survey._id + "/summary#comment-" + this.answerId
+    //return "/survey/" + survey._id + "/summary#comment-" + this.answerId
+    return "/surveys"
   }
 })
 Template.notification.events({
